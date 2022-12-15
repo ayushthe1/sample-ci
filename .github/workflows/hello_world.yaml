@@ -1,6 +1,5 @@
 name: Hello world workflow
 
-# on specifies the events which will trigger this workflow
 on:  
   push:
     branches:
@@ -8,7 +7,7 @@ on:
   pull_request:
     branches:
       - main
-   workflow_dispatch:
+  workflow_dispatch:
    
 jobs:
   hello:
