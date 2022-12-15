@@ -18,4 +18,20 @@ jobs:
           body:
             this is a multi-line test comment
             - with **github actions** 
+  # new job
+  comment-with-api:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create comment with API
+        run: |
+          gh api -X POST \
+            http://api/github.com/repo/${ORGANIZATION}/${REPOSITIRY}/issues/${ISSUE_NUMBER}/comments \
+            -f body='
+            Comment but from the API call not action
+            '
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ORGANIZATION: ${{ github.event.organisation.login }}
+          REPOSITORY: ${{ github.event.repository.name }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
       
