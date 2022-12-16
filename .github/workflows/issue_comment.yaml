@@ -19,7 +19,8 @@ jobs:
             this is a multi-line test comment
             - with **github actions** 
   # new job
-    comment-with-api:
+
+  comment-with-api:
     runs-on: ubuntu-latest
     steps:
       - name: Create comment with API
