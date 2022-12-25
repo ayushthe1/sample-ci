@@ -13,10 +13,10 @@ jobs:
   if: ${{ github.event.label.name == 'bug' }}
   runs-on: ubuntu-latest
   steps:
-   - name: Print Output
+        - name: Print Output
           uses: ethomson/send-tweet-action@v1
           with:
-            status: "HELLOOO Twitter, Checkout this issue  - ${{ github.event.issue.html_url }} with the title ${{ github.event.issue.title }}"
+            status: "HeLLLo Twitter, Checkout this issue - ${{ github.event.issue.html_url }} with the title ${{ github.event.issue.title }}"
             consumer-key: ${{ secrets.TWITTER_CONSUMER_API_KEY }}
             consumer-secret: ${{ secrets.TWITTER_CONSUMER_API_SECRET }}
             access-token: ${{ secrets.TWITTER_ACCESS_TOKEN }}
