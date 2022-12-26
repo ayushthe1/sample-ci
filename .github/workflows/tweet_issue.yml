@@ -1,22 +1,25 @@
-name: 'Tweet when labeled'
+name: 'Tweet issue'
 
 on:
   issues:
     types: labeled
+  pull_request:
+    types: labeled 
+
     
 permissions:
   contents: read
   issues: write
   
 jobs:
-  action:
+  tweet:
     if: ${{ github.event.label.name == 'bug' }}
     runs-on: ubuntu-latest
     steps:
-        - name: Print Output
+        - name: send a tweet
           uses: ethomson/send-tweet-action@v1
           with:
-            status: "HeLLLo Twitter, Checkout this issue - ${{ github.event.issue.html_url }}"
+            status: "Hey everyone, checkout this issue ${{ github.event.issue.title }} here at - ${{ github.event.issue.html_url }}"
             consumer-key: ${{ secrets.TWITTER_CONSUMER_API_KEY }}
             consumer-secret: ${{ secrets.TWITTER_CONSUMER_API_SECRET }}
             access-token: ${{ secrets.TWITTER_ACCESS_TOKEN }}
