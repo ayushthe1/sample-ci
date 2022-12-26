@@ -16,7 +16,7 @@ jobs:
     if: ${{ github.event.label.name == 'bug' }}
     runs-on: ubuntu-latest
     steps:
-        - if: ${{ github.event_name == 'issues' }}
+        - if: ${{ github.event_name != 'pull_request' }}
           name: send a tweet for issue
           uses: ethomson/send-tweet-action@v1
           with:
